@@ -19,8 +19,11 @@ anexo = Anexo(hub= hub)
 while True:
     if (missionSelected == "A"):
         run_task(MissaoA.run(chassi= chassi, anexo= anexo, hub= hub))
+        chassi.stop()
         missionSelected = hub_menu("B", "A")
 
     elif (missionSelected == "B"):
         run_task(MissaoB.run(chassi= chassi, anexo= anexo, hub= hub))
+        chassi.stop()
+
         missionSelected = hub_menu("A", "B")
