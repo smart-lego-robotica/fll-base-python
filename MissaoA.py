@@ -22,3 +22,5 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub):
         chassi.seguirReto(-300, Speed.FAST),
         anexo.girarMotorDireita(700, 500)
     )
+
+    chassi.setSpeed()
