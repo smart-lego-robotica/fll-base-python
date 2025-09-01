@@ -3,18 +3,6 @@ from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSenso
 from pybricks.parameters import Button, Color, Direction, Port, Side, Stop, Axis
 from pybricks.tools import wait, StopWatch, multitask
 
-class Speed:
-    """
-    Perfis de velocidade para os motores do anexo.
-
-    Attributes:
-        SLOW (list[int]): Movimento lento [velocidade, aceleração, --, --].
-        DEFAULT (list[int]): Movimento padrão [velocidade, aceleração, --, --].
-    """
-
-    SLOW = [100, 200, 500, 800]
-    DEFAULT = [100, 200, 500, 800]
-
 
 class Constants:    
     """
@@ -105,7 +93,7 @@ class Anexo:
         """
         await self.rightMotor.run_angle(speed= velocidade, rotation_angle= graus, then=Stop.HOLD)
 
-    def girarAmbos(self, grausEsquerda, grausDireita):
+    async def girarAmbos(self, grausEsquerda, grausDireita):
         """
         Gira os dois motores do anexo simultaneamente.
 

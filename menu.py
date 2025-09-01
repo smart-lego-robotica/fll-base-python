@@ -6,8 +6,10 @@ from pybricks.tools import wait, StopWatch, hub_menu, run_task
 from Chassi import Chassi
 from Anexo import Anexo
 from Hub import Hub
+
 import MissaoA
 import MissaoB
+
 
 missionSelected = hub_menu("A", "B")
 
