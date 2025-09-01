@@ -33,6 +33,8 @@ class Hub:
         Inicializa o Hub com a orientação definida em `Constants`.
         """
         self.hub = PrimeHub(top_side= Constants.TOP_SIDE, front_side= Constants.FRONT_SIDE)
+        self.hub.display.orientation(up=Side.RIGHT)
+        self.hub.system.set_stop_button(Button.BLUETOOTH)
         self.verificarNivelBateria()
 
     def verificarNivelBateria(self):
