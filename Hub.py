@@ -33,6 +33,35 @@ class Hub:
         Inicializa o Hub com a orientação definida em `Constants`.
         """
         self.hub = PrimeHub(top_side= Constants.TOP_SIDE, front_side= Constants.FRONT_SIDE)
+        self.verificarNivelBateria()
+
+    def verificarNivelBateria(self):
+        """
+        Verifica o nível da bateria do Hub e acende o LED indicador.
+
+        O método mede a tensão da bateria e exibe o estado usando
+        o LED central do Hub, com base nos seguintes intervalos:
+
+            - 🟢 Verde: Bateria carregada (voltagem > 8200 mV)
+            - 🟡 Amarelo: Nível médio (7500 < voltagem <= 8200 mV)
+            - 🔴 Vermelho: Bateria fraca (voltagem <= 7500 mV)
+
+        Example:
+            hub.verificarNivelBateria()
+            # O LED acenderá em verde, amarelo ou vermelho dependendo do nível.
+    """
+        voltage = self.hub.battery.voltage()
+
+        if (voltage > 8200):
+            # Carregada
+            self.hub.light.on(Color.GREEN)
+        if (7500 < voltage <= 8200):
+            # Médio
+            self.hub.light.on(Color.YELLOW)
+        else:
+            # Descarregada
+            self.hub.light.on(Color.RED)
+
 
     def resetarGuinada(self):
         """
