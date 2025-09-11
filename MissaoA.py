@@ -2,7 +2,7 @@ from pybricks.hubs import PrimeHub
 from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
 from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
 from pybricks.robotics import DriveBase
-from pybricks.tools import wait, StopWatch, multitask
+from pybricks.tools import wait, StopWatch, multitask, run_task
 from Chassi import Chassi, Speed
 
 from Anexo import Anexo
@@ -10,17 +10,74 @@ from Hub import Hub
 
 
 async def run(chassi: Chassi, anexo: Anexo, hub: Hub):
-    await multitask(
-        chassi.seguirReto(300),
-        anexo.girarMotorDireita(700, 500)
-    )
-    await multitask(
-        chassi.virar(-90, Speed.FAST),
-        anexo.girarMotorEsquerda(400, 1000)
-    )
-    
-    await multitask(
-        chassi.seguirReto(-300, Speed.FAST),
-        anexo.girarMotorDireita(700, 500)
-    )
+    await chassi.seguirReto(681)
+    await chassi.virar(45)
+    await chassi.seguirReto(50)
 
+    await anexo.girarAmbos(-470, 470, 400) # Abaixar para pegar
+    await chassi.seguirReto(25)
+    await anexo.girarAmbos(-350, 350, -400) # Levantar
+    await wait(1000)
+    await chassi.seguirReto(-40)
+
+
+    await chassi.virar(-50, Speed.SLOW)
+    await chassi.virar(50)
+
+    await chassi.seguirReto(-50)
+    await chassi.virar(-50)
+    await chassi.seguirReto(85)
+    await chassi.virar(-40) # Faz a missão de virar
+    await chassi.virar(40)
+
+
+
+    await chassi.seguirReto(-50)
+    await chassi.virar(-85)
+    await chassi.seguirReto(-300, Speed.FAST)  # Da ré para empurrar as pedras
+    
+    await chassi.seguirReto(200)
+    await chassi.virar(-5)
+    await chassi.seguirReto(200)
+    await anexo.girarAmbos(-500, 500, 700) # Abaixar para abaixar balde
+    await chassi.virar(5)
+    await chassi.virar(-2)
+    await anexo.girarAmbos(450, -450, 400) # Voltar para posição normal
+
+    await chassi.seguirReto(-50)
+    await chassi.virar(20)
+    await chassi.seguirReto(310)
+
+    await chassi.virar(20)
+    await chassi.seguirReto(-150)   # Empurra de costar para levantar plataforma
+    await chassi.seguirReto(20, Speed.DEFAULT)   # Empurra de costar para levantar plataforma
+
+    await chassi.seguirReto(-340, Speed.FAST)   # Empurra de costar para levantar plataforma
+
+
+    await chassi.virar(5)
+    await chassi.seguirReto(200)
+
+    await chassi.virar(-30)
+    await chassi.seguirReto(-480)
+
+    await chassi.virar(-52)
+    await chassi.seguirReto(350)
+    await chassi.seguirReto(-250, Speed.FAST)
+
+    await chassi.virar(-45, Speed.FAST)
+    await chassi.seguirReto(600, Speed.FAST)
+
+
+    # await chassi.seguirReto(-700, Speed.FAST)
+
+
+
+
+
+
+if __name__ == "__main__":
+    hub = Hub()
+    chassi = Chassi(hub)
+    anexo = Anexo(hub)
+    run_task(run(chassi, anexo, hub))

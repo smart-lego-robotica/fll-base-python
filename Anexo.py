@@ -93,7 +93,7 @@ class Anexo:
         """
         await self.rightMotor.run_angle(speed= velocidade, rotation_angle= graus, then=Stop.HOLD)
 
-    async def girarAmbos(self, grausEsquerda, grausDireita):
+    async def girarAmbos(self, grausEsquerda, grausDireita, velocidade):
         """
         Gira os dois motores do anexo simultaneamente.
 
@@ -105,9 +105,11 @@ class Anexo:
         Example:
             await anexo.girarAmbos(grausEsquerda=90, grausDireita=45, velocidade=400)
         """
+
+        
         await multitask(
-            self.girarMotorEsquerda(graus= grausEsquerda),
-            self.girarMotorDireita(graus= grausDireita)
+            self.girarMotorEsquerda(graus= grausEsquerda, velocidade=velocidade),
+            self.girarMotorDireita(graus= grausDireita, velocidade=velocidade)
         )
 
     def stopLeft(self):

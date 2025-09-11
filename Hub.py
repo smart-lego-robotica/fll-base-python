@@ -53,6 +53,7 @@ class Hub:
             # O LED acenderá em verde, amarelo ou vermelho dependendo do nível.
     """
         voltage = self.hub.battery.voltage()
+        print(voltage)
 
         if (voltage > 8200):
             # Carregada
