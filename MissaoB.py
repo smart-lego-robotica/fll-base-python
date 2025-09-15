@@ -10,9 +10,16 @@ from Hub import Hub
 
 
 async def run(chassi: Chassi, anexo: Anexo, hub: Hub):
-    await chassi.seguirReto(400)
-    await chassi.seguirReto(-50)
-
+    await chassi.curva(490, -45)
+    await chassi.virar(80)
+    await chassi.seguirReto(220, Speed.FAST) #bater no pino 
+    await chassi.seguirReto(-180, Speed.FAST) 
+    await chassi.seguirReto(400) #frente antes 2
+    await chassi.virar(-80)
+    await chassi.seguirReto(150) #missão 2
+    await anexo.girarMotorDireita(-500,300) 
+    await chassi.seguirReto(50)
+    await chassi.seguirReto(-250)
 
 
 

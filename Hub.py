@@ -53,11 +53,11 @@ class Hub:
             # O LED acenderá em verde, amarelo ou vermelho dependendo do nível.
     """
         voltage = self.hub.battery.voltage()
-
-        if (voltage > 8200):
+        print(voltage)
+        if (voltage > 7900):
             # Carregada
             self.hub.light.on(Color.GREEN)
-        if (7500 < voltage <= 8200):
+        elif (7500 < voltage <= 7900):
             # Médio
             self.hub.light.on(Color.YELLOW)
         else:

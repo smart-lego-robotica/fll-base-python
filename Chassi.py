@@ -20,7 +20,7 @@ class Speed:
         FAST (list[int]): Movimento rápido.
     """
 
-    SLOW = [100, 200, 500, 800]
+    SLOW = [100, 200, 200, 500]
     DEFAULT = [400, 400, 500, 800]
     FAST = [1000, 800, 1200, 800]
 
