@@ -54,10 +54,10 @@ class Hub:
     """
         voltage = self.hub.battery.voltage()
         print(voltage)
-        if (voltage > 7900):
+        if (voltage > 8200):
             # Carregada
             self.hub.light.on(Color.GREEN)
-        elif (7500 < voltage <= 7900):
+        elif (voltage > 7500 and voltage <= 7900):
             # Médio
             self.hub.light.on(Color.YELLOW)
         else:

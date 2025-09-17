@@ -10,16 +10,35 @@ from Hub import Hub
 
 
 async def run(chassi: Chassi, anexo: Anexo, hub: Hub):
-    await chassi.curva(490, -45)
-    await chassi.virar(80)
-    await chassi.seguirReto(220, Speed.FAST) #bater no pino 
-    await chassi.seguirReto(-180, Speed.FAST) 
-    await chassi.seguirReto(400) #frente antes 2
-    await chassi.virar(-80)
-    await chassi.seguirReto(150) #missão 2
-    await anexo.girarMotorDireita(-500,300) 
-    await chassi.seguirReto(50)
-    await chassi.seguirReto(-250)
+    await chassi.seguirReto(500, Speed.FAST)
+    await chassi.seguirReto(200, Speed.FAST)
+    await chassi.seguirReto(-200, Speed.FAST)
+
+    await chassi.virar(50)
+
+    await chassi.seguirReto(260)
+    await chassi.virar(-95, Speed.DEFAULT)
+
+    await chassi.seguirReto(300, Speed.SLOW)
+    await chassi.virar(10, Speed.FAST)
+    await chassi.virar(-10, Speed.FAST)
+
+    await chassi.seguirReto(-30, Speed.FAST)
+    await anexo.girarMotorDireita(-230, 700),
+    await chassi.seguirReto(-170, Speed.FAST)
+
+    await chassi.virar(-42)
+    await anexo.girarMotorEsquerda(-570, 600),
+
+    await wait(1000)
+    await chassi.seguirReto(130, Speed.SLOW)
+
+    await anexo.girarMotorEsquerda(300, 600),
+
+    await chassi.seguirReto(-170, Speed.FAST)
+    await chassi.virar(120, Speed.FAST)
+    await chassi.seguirReto(-810, Speed.FAST)
+    # )
 
 
 
