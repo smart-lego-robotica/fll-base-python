@@ -11,7 +11,7 @@ from Hub import Hub
 
 async def run(chassi: Chassi, anexo: Anexo, hub: Hub): 
     await chassi.seguirReto(681)
-    await chassi.virar(48, Speed.SLOW)
+    await chassi.virar(46, Speed.SLOW)
     await chassi.seguirReto(75, Speed.SLOW)
     await anexo.girarAmbos(-458, 458, 400) # Abaixar para pegar
     await chassi.seguirReto(43)
@@ -45,14 +45,14 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub):
 
     await chassi.seguirReto(-50)
     await chassi.virar(70)
-    await chassi.seguirReto(-185, Speed.FAST)
+    await chassi.seguirReto(-140, Speed.FAST)
 
 
-    await chassi.virar(-98)
-    await chassi.seguirReto(200, Speed.SLOW)
-    await chassi.seguirReto(-200, Speed.FAST)
+    await chassi.virar(-105)
+    await chassi.seguirReto(250, Speed.FAST)
+    await chassi.seguirReto(-250, Speed.FAST)
     await chassi.virar(110, Speed.FAST)
-    await chassi.seguirReto(-400, Speed.FAST)
+    await chassi.seguirReto(-500, Speed.FAST)
 
 
 
