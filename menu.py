@@ -13,6 +13,7 @@ from SoundEffects import SoundEffects
 import MissaoA
 import MissaoB
 import MissaoC
+import MissaoD
 
 
 hub = Hub()
@@ -21,7 +22,7 @@ chassi = Chassi(hub= hub)
 anexo = Anexo(hub= hub)
 
 sound.ligarRobo()
-missionSelected = hub_menu("A", "B", "C")
+missionSelected = hub_menu("A", "B", "C", "D")
 
 while True:
     if (missionSelected == "A"):
@@ -46,6 +47,15 @@ while True:
         sound.iniciarMissao()
 
         run_task(MissaoC.run(chassi= chassi, anexo= anexo, hub= hub))
+        chassi.stop()
+        sound.finalizarMissao()
+
+        missionSelected = hub_menu("D", "C", "A", "B")
+
+    elif (missionSelected == "D"):
+        sound.iniciarMissao()
+
+        run_task(MissaoD.run(chassi= chassi, anexo= anexo, hub= hub))
         chassi.stop()
         sound.finalizarMissao()
 

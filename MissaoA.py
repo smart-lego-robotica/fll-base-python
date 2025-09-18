@@ -8,7 +8,7 @@ from Chassi import Chassi, Speed
 from Anexo import Anexo
 from Hub import Hub
 
-
+# Missão A - Derruba pedra, vira o negocio, e abaixa o balde
 async def run(chassi: Chassi, anexo: Anexo, hub: Hub): 
     await chassi.seguirReto(681)
     await chassi.virar(46, Speed.SLOW)

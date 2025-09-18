@@ -8,7 +8,7 @@ from Chassi import Chassi, Speed
 from Anexo import Anexo
 from Hub import Hub
 
-
+# Missão B - Pegando Pincel e virando o negocio
 async def run(chassi: Chassi, anexo: Anexo, hub: Hub):
     await chassi.seguirReto(500, Speed.FAST)
     await chassi.seguirReto(200, Speed.FAST)
