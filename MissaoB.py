@@ -24,7 +24,7 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub):
     await chassi.virar(-10, Speed.FAST)
 
     await chassi.seguirReto(-30, Speed.FAST)
-    await anexo.girarMotorDireita(-230, 700),
+    await anexo.girarMotorDireita(-250, 700) #pegar negocio verde
     await chassi.seguirReto(-170, Speed.FAST)
 
     await chassi.virar(-42)
