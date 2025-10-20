@@ -8,21 +8,35 @@ from Chassi import Chassi, Speed
 from Anexo import Anexo
 from Hub import Hub
 
-# Missão D - Descobrir areia do barco (Operação de resgate)
+# Missão D - Missão Compartilhada e pega extração
 async def run(chassi: Chassi, anexo: Anexo, hub: Hub):
-    await chassi.seguirReto(450)
 
-    await chassi.seguirReto(-130, Speed.SLOW)   # Puxar areia
+    await anexo.girarMotorDireita(-100,600)
+    await chassi.seguirReto(-890)
+    await chassi.seguirReto(155, Speed.SLOW)
+    await chassi.virar(-95)
+    await wait (1000)
+    await chassi.seguirReto(180, Speed.SLOW)
+    await multitask(
+        anexo.girarMotorEsquerda(-850,500),
+        anexo.girarMotorDireita(-450, 400)
+    )
 
+    await chassi.virar(-10)
 
-    await chassi.seguirReto(150, Speed.SLOW)    # Empurrar barco
-    await chassi.seguirReto(110, Speed.SLOW)    # Empurrar barco
+    await chassi.seguirReto(-200) #sair extração segura
+    await chassi.virar(75, Speed.SLOW) 
 
-    await chassi.virar(10)  # Voltar
-    await chassi.seguirReto(-600)
+    await multitask(
+        chassi.seguirReto(200,Speed.FAST), # entregar extração segura 
+        anexo.girarMotorEsquerda(800,600)
+    )
+   
+    await chassi.seguirReto(-100, Speed.FAST)
+    await chassi.virar(50, Speed.FAST)
 
-
-
+    
+    await chassi.seguirReto(550, Speed.FAST)
     
 if __name__ == "__main__":
     hub = Hub()

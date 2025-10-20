@@ -8,36 +8,42 @@ from Chassi import Chassi, Speed
 from Anexo import Anexo
 from Hub import Hub
 
-# Missão C - Missão Compartilhada e pega extração
+# Missão  C - Pegando Pincel e virando o negocio
 async def run(chassi: Chassi, anexo: Anexo, hub: Hub):
+    await chassi.seguirReto(500, Speed.FAST)
+    await chassi.seguirReto(200, Speed.FAST)
+    await chassi.seguirReto(-200, Speed.FAST)
 
-    await anexo.girarMotorDireita(-100,600)
-    await chassi.seguirReto(-890)
-    await chassi.seguirReto(155, Speed.SLOW)
-    await chassi.virar(-95)
-    await wait (1000)
-    await chassi.seguirReto(180, Speed.SLOW)
-    await multitask(
-        anexo.girarMotorEsquerda(-850,500),
-        anexo.girarMotorDireita(-450, 400)
-    )
+    await chassi.virar(50)
 
-    await chassi.virar(-10)
+    await chassi.seguirReto(260)
+    await chassi.virar(-95, Speed.DEFAULT)
 
-    await chassi.seguirReto(-200) #sair extração segura
-    await chassi.virar(75, Speed.SLOW) 
+    await chassi.seguirReto(300, Speed.SLOW)
+    await chassi.virar(10, Speed.FAST)
+    await chassi.virar(-10, Speed.FAST)
 
-    await multitask(
-        chassi.seguirReto(200,Speed.FAST), # entregar extração segura 
-        anexo.girarMotorEsquerda(800,600)
-    )
-   
-    await chassi.seguirReto(-100, Speed.FAST)
-    await chassi.virar(50, Speed.FAST)
+    await chassi.seguirReto(-30, Speed.FAST)
+    await anexo.girarMotorDireita(-250, 700) #pegar negocio verde
+    await chassi.seguirReto(-170, Speed.FAST)
 
-    
-    await chassi.seguirReto(550, Speed.FAST)
-    
+    await chassi.virar(-42)
+    await anexo.girarMotorEsquerda(-570, 600) 
+
+    await wait(500)
+    await chassi.seguirReto(110, Speed.SLOW)
+
+    await anexo.girarMotorEsquerda(300, 600),
+
+    await chassi.seguirReto(-170, Speed.FAST)
+    await chassi.virar(120, Speed.FAST)
+    await chassi.seguirReto(-810, Speed.FAST)
+    # )
+
+
+
+
+
 if __name__ == "__main__":
     hub = Hub()
     chassi = Chassi(hub)

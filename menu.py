@@ -59,4 +59,4 @@ while True:
         chassi.stop()
         sound.finalizarMissao()
 
-        missionSelected = hub_menu("C", "A", "B")
+        missionSelected = hub_menu("D", "C", "A", "B")

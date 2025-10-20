@@ -12,14 +12,14 @@ from Hub import Hub
 async def run(chassi: Chassi, anexo: Anexo, hub: Hub): 
     await chassi.seguirReto(400)
     await anexo.girarMotorDireita(-300, 400)
-    await anexo.girarMotorDireita(200, 500)
-    await anexo.girarMotorDireita(-250, 400)
-    await anexo.girarMotorDireita(200, 500)
+    await anexo.girarMotorDireita(250, 300)
+    await anexo.girarMotorDireita(-250, 500)
+    await anexo.girarMotorDireita(250, 300)
     await wait(500)
-    await anexo.girarMotorDireita(-200, 600)
-    await anexo.girarMotorDireita(400, 300)
-
-
+    await anexo.girarMotorDireita(-200, 300)
+    await anexo.girarMotorDireita(400, 500)
+    await Chassi.seguirReto(300)
+    
 if __name__ == "__main__":
     hub = Hub()
     chassi = Chassi(hub)

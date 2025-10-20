@@ -46,3 +46,6 @@ class SoundEffects:
         self.hub.speaker.beep(600, 150)
         wait(50)
         self.hub.speaker.beep(900, 200)
+
+    async def beep(self):
+        await self.hub.speaker.beep(600, 150)

@@ -8,23 +8,22 @@ from Chassi import Chassi, Speed
 from Anexo import Anexo
 from Hub import Hub
 
-# Missão E - Rodar engrenagem e pegar Scale pan   (10 e 11)
-async def run(chassi: Chassi, anexo: Anexo, hub: Hub): 
-    await chassi.seguirReto(830)
-    await chassi.virar(-80)
-    await   chassi.seguirReto(100, Speed.SLOW)
+# Missão E - Descobrir areia do barco (Operação de resgate)
+async def run(chassi: Chassi, anexo: Anexo, hub: Hub):
+    await chassi.seguirReto(450)
 
-    await multitask(
-        anexo.girarMotorDireita(1700,-500),
-        chassi.virar(-15,)         
-    )
-    await chassi.seguirReto(-290)
-    await chassi.seguirReto(150,Speed.FAST)
-    await chassi.curva(100,-75,Speed.FAST)
-    await chassi.seguirReto(630,Speed.FAST)
+    await chassi.seguirReto(-130, Speed.SLOW)   # Puxar areia
+
+
+    await chassi.seguirReto(150, Speed.SLOW)    # Empurrar barco
+    await chassi.seguirReto(110, Speed.SLOW)    # Empurrar barco
+
+    await chassi.virar(5)  # Voltar
+    await chassi.seguirReto(-600)
 
 
 
+    
 if __name__ == "__main__":
     hub = Hub()
     chassi = Chassi(hub)
