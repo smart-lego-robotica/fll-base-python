@@ -1,4 +1,5 @@
 from pybricks.tools import wait
+from pybricks.hubs import PrimeHub
 
 class SoundEffects:
     """
@@ -47,5 +48,15 @@ class SoundEffects:
         wait(50)
         self.hub.speaker.beep(900, 200)
 
-    async def beep(self):
-        await self.hub.speaker.beep(600, 150)
+    async def beep(self, frequencia=600, duracao=40):
+        """
+        Realiza um beep para sinalizar algo
+
+        Args:
+            frequencia (int): Frequencia do som emitido.
+            duracao (int): Duracação do som emitido.
+
+        Example:
+            await sound.beep(frequencia=50, duracao=100)
+        """
+        await self.hub.speaker.beep(frequency= frequencia, duration= duracao)

@@ -19,19 +19,25 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub):
     await chassi.seguirReto(260)
     await chassi.virar(-95, Speed.DEFAULT)
 
-    await chassi.seguirReto(300, Speed.SLOW)
+    await chassi.seguirReto(280, Speed.DEFAULT)
     await chassi.virar(10, Speed.FAST)
     await chassi.virar(-10, Speed.FAST)
 
-    await chassi.seguirReto(-30, Speed.FAST)
-    await anexo.girarMotorDireita(-250, 700) #pegar negocio verde
-    await chassi.seguirReto(-170, Speed.FAST)
 
-    await chassi.virar(-42)
-    await anexo.girarMotorEsquerda(-570, 600) 
+    await multitask(
+        chassi.seguirReto(-190, Speed.FAST),
+        anexo.girarMotorDireita(-250, 500) #pegar negocio verde
+    )
+
+    await chassi.virar(-46)
 
     await wait(500)
-    await chassi.seguirReto(110, Speed.SLOW)
+
+    await multitask(
+        anexo.girarMotorEsquerda(-350, 600),
+
+        chassi.seguirReto(120, Speed.SLOW)
+    )
 
     await anexo.girarMotorEsquerda(300, 600),
 

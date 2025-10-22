@@ -14,6 +14,7 @@ import MissaoA
 import MissaoB
 import MissaoC
 import MissaoD
+import MissaoE
 
 
 hub = Hub()
@@ -22,10 +23,10 @@ chassi = Chassi(hub= hub)
 anexo = Anexo(hub= hub)
 
 sound.ligarRobo()
-missionSelected = hub_menu("A", "B", "C", "D")
+missionSelected = hub_menu("A", "B", "C", "D", "E")
 
 while True:
-    if (missionSelected == "A"):
+    if (missionSelected == "A"): # Lado Azul
         sound.iniciarMissao()
 
         run_task(MissaoA.run(chassi= chassi, anexo= anexo, hub= hub))
@@ -34,29 +35,38 @@ while True:
 
         missionSelected = hub_menu("B", "A")
 
-    elif (missionSelected == "B"):
+    elif (missionSelected == "B"): # Lado Azul
         sound.iniciarMissao()
 
-        run_task(MissaoB.run(chassi= chassi, anexo= anexo, hub= hub))
+        run_task(MissaoB.run(chassi= chassi, anexo= anexo, hub= hub, soundEffects=sound))
         chassi.stop()
         sound.finalizarMissao()
 
         missionSelected = hub_menu("C", "A", "B")
 
-    elif (missionSelected == "C"):
+    elif (missionSelected == "C"): # Lado Vermelho
         sound.iniciarMissao()
 
         run_task(MissaoC.run(chassi= chassi, anexo= anexo, hub= hub))
         chassi.stop()
         sound.finalizarMissao()
 
-        missionSelected = hub_menu("D", "C", "A", "B")
+        missionSelected = hub_menu("D", "C")
 
-    elif (missionSelected == "D"):
+    elif (missionSelected == "D"): # Lado Vermelho
         sound.iniciarMissao()
 
         run_task(MissaoD.run(chassi= chassi, anexo= anexo, hub= hub))
         chassi.stop()
         sound.finalizarMissao()
 
-        missionSelected = hub_menu("D", "C", "A", "B")
+        missionSelected = hub_menu("E", "D")
+
+    elif (missionSelected == "E"): # Lado Vermelho
+        sound.iniciarMissao()
+
+        run_task(MissaoE.run(chassi= chassi, anexo= anexo, hub= hub))
+        chassi.stop()
+        sound.finalizarMissao()
+
+        missionSelected = hub_menu("D", "E")
