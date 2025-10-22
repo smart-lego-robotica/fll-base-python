@@ -12,37 +12,31 @@ from Hub import Hub
 async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects): 
     await soundEffects.beep()
 
-    await chassi.seguirReto(200) 
+    await chassi.seguirReto(240) 
     await chassi.virar(45)
     await chassi.seguirReto(260)
-    await anexo.girarMotorEsquerda(500,-500)
+    await anexo.girarMotorEsquerda(500,-700)
 
     await soundEffects.beep()
-
+    await chassi.virar(10)
     await multitask(
 
-        chassi.seguirReto(-500, Speed.DEFAULT),
-        anexo.girarMotorEsquerda(100, 100)
+        chassi.seguirReto(-200, Speed.DEFAULT),
+        anexo.girarMotorEsquerda(210, 100)
+    )
+    await multitask(
+
+        chassi.seguirReto(-400, Speed.FAST),
+        anexo.girarMotorEsquerda(80, 700)
     )
 
 
-    # await chassi.seguirReto(-200, Speed.FAST)   # Levanta o negocio
-    # await chassi.seguirReto(20, Speed.FAST)
-    # await anexo.girarMotorEsquerda(-200,-400)
-
-    # await soundEffects.beep()
-
-    # await multitask(
-    #     anexo.girarMotorEsquerda(graus=200, velocidade=500),
-    #     chassi.seguirReto(-300,Speed.FAST)
-
-    # )
     await soundEffects.beep()
 
     chassi.stop()
 
     await multitask(
-        anexo.girarMotorEsquerda(400, 700),
+        anexo.girarMotorEsquerda(250, 700),
         soundEffects.beep(frequencia=700, duracao=2000)
     )
 
@@ -55,7 +49,7 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects
     # await wait(200)
 
 
-    await chassi.seguirReto(870, Speed.FAST)
+    await chassi.seguirReto(870, Speed.DEFAULT)
     await chassi.virar(-88)
     await chassi.seguirReto(90, Speed.SLOW) # Aproxima da missão
 
