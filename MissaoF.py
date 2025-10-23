@@ -18,7 +18,7 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub):
     await wait(500)
     await anexo.girarMotorDireita(-200, 300)
     await anexo.girarMotorDireita(400, 500)
-    await Chassi.seguirReto(300)
+    await chassi.seguirReto(300)
     
 if __name__ == "__main__":
     hub = Hub()
