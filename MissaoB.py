@@ -49,7 +49,7 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects
     # await wait(200)
 
 
-    await chassi.seguirReto(870, Speed.VERY_FAST)
+    await chassi.seguirReto(870, Speed.FAST)
     await chassi.virar(-88)
     await chassi.seguirReto(90, Speed.SLOW) # Aproxima da missão
 

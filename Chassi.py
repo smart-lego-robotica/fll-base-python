@@ -85,7 +85,7 @@ class Chassi:
 
         # Ajuste de PID para controle de heading
         # kp, kd, ki, integral_deadzone, integral_rate
-        self.driveBase.heading_control.pid(19000, 0, 2000, 100, 70)
+        self.driveBase.heading_control.pid(22000, 0, 2000, 100, 70)
         # (38, 20)
         self.driveBase.heading_control.target_tolerances(speed=8, position=4)
         self.driveBase.use_gyro(use_gyro=True)

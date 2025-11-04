@@ -56,7 +56,7 @@ while True:
     elif (missionSelected == "D"): # Lado Vermelho
         sound.iniciarMissao()
 
-        run_task(MissaoD.run(chassi= chassi, anexo= anexo, hub= hub))
+        run_task(MissaoD.run(chassi= chassi, anexo= anexo, hub= hub, soundEffects=sound))
         chassi.stop()
         sound.finalizarMissao()
 
