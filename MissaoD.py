@@ -27,7 +27,7 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects
 
 
     await chassi.seguirReto(-210, Speed.DEFAULT) #sair extração segura
-    await chassi.virar(60, Speed.SLOW) 
+    await chassi.virar(66, Speed.SLOW) 
 
 
     await chassi.seguirReto(250, Speed.VERY_FAST)

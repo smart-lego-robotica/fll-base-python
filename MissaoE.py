@@ -10,9 +10,9 @@ from Hub import Hub
 
 # Missão E - Descobrir areia do barco (Operação de resgate)
 async def run(chassi: Chassi, anexo: Anexo, hub: Hub):
-    await chassi.seguirReto(450)
+    await chassi.seguirReto(520)
 
-    await chassi.seguirReto(-130, Speed.SLOW)   # Puxar areia
+    await chassi.seguirReto(-190, Speed.FAST)   # Puxar areia
 
 
     await chassi.seguirReto(150, Speed.SLOW)    # Empurrar barco
