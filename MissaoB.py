@@ -56,7 +56,7 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects
     # Faz a missão de levantar girando a engrenagem
 
     await multitask(
-        anexo.girarMotorDireita(1800,-500),
+        anexo.girarMotorDireita(1800,500),
         chassi.virar(-18,Speed.FAST)
     )
 

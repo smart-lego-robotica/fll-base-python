@@ -49,18 +49,18 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub):
         # )
     """
     
-    await chassi.seguirReto(distancia=690.00, velocidade=Speed.VERY_FAST)
-    await chassi.seguirReto(distancia=-100.00, velocidade=Speed.VERY_FAST)
-    await chassi.seguirReto(distancia=150.00, velocidade=Speed.VERY_FAST)
+    await chassi.seguirReto(distancia=719.00, velocidade=Speed.VERY_FAST)
+    await chassi.seguirReto(distancia=-129.00, velocidade=Speed.VERY_FAST)
+    await chassi.seguirReto(distancia=175.00, velocidade=Speed.VERY_FAST)
     await chassi.seguirReto(distancia=-60.00, velocidade=Speed.VERY_FAST)
 
     # await anexo.girarMotorEsquerda(graus=100, velocidade=600)
-    await anexo.girarMotorEsquerda(graus=280, velocidade=600)
-    await anexo.girarMotorEsquerda(graus=180, velocidade=-600)
+    await anexo.girarMotorEsquerda(graus=280, velocidade=200)
+    await anexo.girarMotorEsquerda(graus=180, velocidade=-700)
 
 
 
-    await chassi.virar(-1, Speed.DEFAULT)
+    await chassi.virar(1, Speed.DEFAULT)
 
     await chassi.seguirReto(distancia=75, velocidade=Speed.DEFAULT)
 
@@ -86,20 +86,12 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub):
 
     await chassi.virar(angulo=-3, velocidade=Speed.VERY_FAST)
 
-    # await anexo.girarMotorDireita(graus=200, velocidade=-500)
-
-    # await chassi.seguirReto(distancia=-12, velocidade=Speed.DEFAULT)
-    # await chassi.virar(angulo=7, velocidade=Speed.VERY_FAST)
-    await chassi.seguirReto(distancia=-100.00, velocidade=Speed.VERY_FAST)
-
-    # await anexo.girarMotorEsquerda(graus=200, velocidade=-700)
-    # await anexo.girarMotorEsquerda(graus=200, velocidade=-300)
-
-    # await anexo.girarMotorEsquerda(graus=400, velocidade=700)
-    await anexo.girarMotorEsquerda(graus=-100,velocidade=600)
-
-
-    await chassi.seguirReto(distancia=-700.00, velocidade=Speed.VERY_FAST)
+    
+    await multitask (
+          chassi.seguirReto(distancia=-80.00, velocidade=Speed.VERY_FAST),
+          anexo.girarMotorEsquerda(graus=-100,velocidade=600),
+          chassi.seguirReto(distancia=-700.00, velocidade=Speed.VERY_FAST)
+    )
 
 
 if __name__ == "__main__":
