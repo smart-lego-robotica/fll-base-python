@@ -19,10 +19,19 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects
 
     await chassi.seguirReto(130, Speed.SLOW)
     await chassi.virar(-92, Speed.VERY_FAST)
-    await chassi.seguirReto(190, Speed.SLOW)
+    # await chassi.seguirReto(190, Speed.SLOW)
+
+
+    await multitask(
+        chassi.seguirReto(190, Speed.SLOW),
+        anexo.girarMotorDireita(graus=-100, velocidade=50)
+
+    )
+
+
     await multitask(
         anexo.girarMotorEsquerda(-850,500),
-        anexo.girarMotorDireita(-450, 400)
+        anexo.girarMotorDireita(-350, 400)
     )
 
 
@@ -36,27 +45,46 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects
 
     await multitask(
         anexo.girarMotorEsquerda(graus=600, velocidade=600), # Abaixar descoberta para cair
-        chassi.seguirReto(-100, Speed.SLOW)
+        chassi.seguirReto(-200, Speed.SLOW)
     )
 
-    await chassi.virar(angulo=40, velocidade=Speed.VERY_FAST)
-    await chassi.seguirReto(600, Speed.VERY_FAST)
+    # Teste pescoço
+    await multitask(
+        chassi.virar(angulo=-30, velocidade=Speed.VERY_FAST),
+        anexo.girarMotorDireita(graus=500, velocidade=600),
+        anexo.girarMotorEsquerda(graus=-100, velocidade=600)
 
+    )
+
+
+    await chassi.seguirReto(380, Speed.VERY_FAST)   # Ir até o pescoço
+    await chassi.virar(-25, Speed.DEFAULT)
+
+    await chassi.virar(25, Speed.VERY_FAST)
+    await chassi.seguirReto(-400, Speed.VERY_FAST)
+
+
+
+    # Volta para a base
+    await chassi.virar(angulo=80, velocidade=Speed.VERY_FAST)
+
+    await multitask(
+        anexo.girarMotorDireita(graus=-400, velocidade=600),
+        chassi.seguirReto(600, Speed.VERY_FAST)
+    )
     chassi.stop()
     await soundEffects.beep(frequencia=200, duracao=100)
-
-
-
     await soundEffects.beep(frequencia=700, duracao=3000)
     await soundEffects.beep(frequencia=400, duracao=3000)
     await soundEffects.beep(frequencia=200, duracao=2000)
 
+    # Realiza as entregas dos elementos
 
     await chassi.seguirReto(550, Speed.VERY_FAST)
     
     await multitask(
         chassi.seguirReto(-200, Speed.SLOW),
-        anexo.girarMotorDireita(graus=400, velocidade=600)
+        anexo.girarMotorDireita(graus=350, velocidade=600)
 
     )
 
