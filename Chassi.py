@@ -24,7 +24,7 @@ class Speed:
     DEFAULT = [400, 400, 500, 800]
     FAST = [1000, 800, 1200, 800]
 
-    VERY_FAST = [1000, 1000, 1400, 800]
+    VERY_FAST = [1000, 700, 1400, 700]
 
 
 
@@ -85,7 +85,9 @@ class Chassi:
 
         # Ajuste de PID para controle de heading
         # kp, kd, ki, integral_deadzone, integral_rate
-        self.driveBase.heading_control.pid(22000, 0, 2000, 100, 70)
+        self.driveBase.heading_control.pid(27000, 0, 2000, 100, 30)
+
+
         # (38, 20)
         self.driveBase.heading_control.target_tolerances(speed=8, position=4)
         self.driveBase.use_gyro(use_gyro=True)

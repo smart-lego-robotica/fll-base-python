@@ -13,6 +13,8 @@ from SoundEffects import SoundEffects
 async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects):
     await multitask(
         anexo.girarMotorDireita(-100,600),
+        anexo.girarMotorEsquerda(50,600),
+
         chassi.seguirReto(-890, Speed.VERY_FAST)
     )
 
@@ -50,15 +52,20 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects
 
     # Teste pescoço
     await multitask(
-        chassi.virar(angulo=-30, velocidade=Speed.VERY_FAST),
+        chassi.virar(angulo=-28, velocidade=Speed.VERY_FAST),
         anexo.girarMotorDireita(graus=500, velocidade=600),
-        anexo.girarMotorEsquerda(graus=-100, velocidade=600)
+        anexo.girarMotorEsquerda(graus=-200, velocidade=600)
 
     )
 
 
     await chassi.seguirReto(380, Speed.VERY_FAST)   # Ir até o pescoço
-    await chassi.virar(-25, Speed.DEFAULT)
+    await multitask(
+        chassi.virar(-25, Speed.DEFAULT),
+        wait(1000),
+        race=True
+    )
+    # await chassi.virar(-25, Speed.DEFAULT)
 
     await chassi.virar(25, Speed.VERY_FAST)
     await chassi.seguirReto(-400, Speed.VERY_FAST)

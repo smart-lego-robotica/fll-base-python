@@ -9,7 +9,21 @@ from Anexo import Anexo
 from Hub import Hub
 
 # Missão E - Descobrir areia do barco (Operação de resgate)
-async def run(chassi: Chassi, anexo: Anexo, hub: Hub):
+async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects):
+    await soundEffects.beep()
+    
+    await chassi.seguirReto(-580, Speed.VERY_FAST)
+    await chassi.seguirReto(550, Speed.VERY_FAST)
+
+    await soundEffects.beep()
+
+    chassi.stop()
+
+    await soundEffects.beep(frequencia=600, duracao=2000)
+    await soundEffects.beep(frequencia=400, duracao=1000)
+
+
+
     await chassi.seguirReto(520)
 
     await chassi.seguirReto(-190, Speed.FAST)   # Puxar areia
@@ -28,4 +42,6 @@ if __name__ == "__main__":
     hub = Hub()
     chassi = Chassi(hub)
     anexo = Anexo(hub)
-    run_task(run(chassi, anexo, hub))
+    soundEffects =  SoundEffects(hub=hub.hub)
+
+    run_task(run(chassi, anexo, hub, soundEffects))

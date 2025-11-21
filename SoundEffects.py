@@ -60,3 +60,6 @@ class SoundEffects:
             await sound.beep(frequencia=50, duracao=100)
         """
         await self.hub.speaker.beep(frequency= frequencia, duration= duracao)
+
+    def setVolume(self, volume):
+        self.hub.speaker.volume(volume)

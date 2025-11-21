@@ -50,8 +50,8 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub):
     """
     
     await chassi.seguirReto(distancia=719.00, velocidade=Speed.VERY_FAST)
-    await chassi.seguirReto(distancia=-129.00, velocidade=Speed.VERY_FAST)
-    await chassi.seguirReto(distancia=175.00, velocidade=Speed.VERY_FAST)
+    await chassi.seguirReto(distancia=-134.00, velocidade=Speed.VERY_FAST)
+    await chassi.seguirReto(distancia=180.00, velocidade=Speed.VERY_FAST)
     await chassi.seguirReto(distancia=-60.00, velocidade=Speed.VERY_FAST)
 
     # await anexo.girarMotorEsquerda(graus=100, velocidade=600)

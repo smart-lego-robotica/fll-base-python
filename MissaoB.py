@@ -12,6 +12,7 @@ from Hub import Hub
 async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects): 
     await soundEffects.beep()
 
+
     await chassi.seguirReto(240, Speed.VERY_FAST) 
     await chassi.virar(45, Speed.VERY_FAST)
     await chassi.seguirReto(260, Speed.VERY_FAST)
@@ -24,10 +25,12 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects
         chassi.seguirReto(-200, Speed.DEFAULT),
         anexo.girarMotorEsquerda(210, 100)
     )
+    await chassi.seguirReto(50, Speed.FAST)
+
     await multitask(
 
         chassi.seguirReto(-400, Speed.FAST),
-        anexo.girarMotorEsquerda(80, 700)
+        anexo.girarMotorEsquerda(130, 700)
     )
 
 
@@ -49,26 +52,32 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects
     # await wait(200)
 
 
-    await chassi.seguirReto(870, Speed.FAST)
-    await chassi.virar(-88)
-    await chassi.seguirReto(90, Speed.SLOW) # Aproxima da missão
+    await chassi.seguirReto(860, Speed.FAST)
+    await chassi.virar(-83)
+    await chassi.seguirReto(80, Speed.SLOW) # Aproxima da missão
 
     # Faz a missão de levantar girando a engrenagem
 
     await multitask(
-        anexo.girarMotorDireita(1800,500),
-        chassi.virar(-18,Speed.FAST)
+        anexo.girarMotorDireita(-1500,800),
+        chassi.virar(-18, Speed.SLOW)
     )
+    await chassi.virar(10, Speed.VERY_FAST),
 
 
-    await chassi.seguirReto(-90, Speed.FAST)
-    await chassi.virar(30,Speed.FAST)         
+    # await chassi.seguirReto(-90, Speed.FAST)
+    # await chassi.virar(18,Speed.FAST)         
 
-    await chassi.seguirReto(-300, Speed.FAST)
+    await chassi.seguirReto(-310, Speed.FAST)
     await wait(500)
     await chassi.seguirReto(100, Speed.VERY_FAST)    # Coleta o negocio de ré
-    await chassi.virar(75, Speed.VERY_FAST)
-    await chassi.seguirReto(950,Speed.VERY_FAST) # Chega na outra base
+
+
+    await chassi.virar(90, Speed.VERY_FAST)
+
+
+    await chassi.curva(1800, -30, Speed.VERY_FAST)
+    # await chassi.seguirReto(950,Speed.VERY_FAST) # Chega na outra base
 
 
 

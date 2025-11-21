@@ -19,6 +19,7 @@ import MissaoE
 
 hub = Hub()
 sound = SoundEffects(hub= hub.hub)
+sound.setVolume(30)
 chassi = Chassi(hub= hub)
 anexo = Anexo(hub= hub)
 
@@ -65,7 +66,7 @@ while True:
     elif (missionSelected == "E"): # Lado Vermelho
         sound.iniciarMissao()
 
-        run_task(MissaoE.run(chassi= chassi, anexo= anexo, hub= hub))
+        run_task(MissaoE.run(chassi= chassi, anexo= anexo, hub= hub, soundEffects=sound))
         chassi.stop()
         sound.finalizarMissao()
 
