@@ -12,7 +12,7 @@ from SoundEffects import SoundEffects
 # Missão D - Missão Compartilhada e pega extração
 async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects):
     await multitask(
-        anexo.girarMotorDireita(-100,600),
+        anexo.girarMotorDireita(-60,600),
         anexo.girarMotorEsquerda(50,600),
 
         chassi.seguirReto(-890, Speed.VERY_FAST)
@@ -94,9 +94,9 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects
         anexo.girarMotorDireita(graus=350, velocidade=600)
 
     )
-
-    await chassi.seguirReto(150, Speed.SLOW),
-    await chassi.seguirReto(-500, Speed.VERY_FAST),
+    await anexo.girarMotorDireita(200,350)
+    await chassi.seguirReto(150, Speed.SLOW)
+    await chassi.seguirReto(-500, Speed.VERY_FAST)
 
 
     

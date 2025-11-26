@@ -14,14 +14,13 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects
 
 
     await chassi.seguirReto(240, Speed.VERY_FAST) 
-    await chassi.virar(45, Speed.VERY_FAST)
+    await chassi.virar(45, Speed.VERY_FAST) #ficar na direção para a missão
     await chassi.seguirReto(260, Speed.VERY_FAST)
-    await anexo.girarMotorEsquerda(500,-700)
+    await anexo.girarMotorEsquerda(500,-700) #fazer missão balança
 
     await soundEffects.beep()
     await chassi.virar(10, Speed.VERY_FAST)
     await multitask(
-
         chassi.seguirReto(-200, Speed.DEFAULT),
         anexo.girarMotorEsquerda(210, 100)
     )
@@ -29,7 +28,7 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects
 
     await multitask(
 
-        chassi.seguirReto(-400, Speed.FAST),
+        chassi.seguirReto(-500, Speed.FAST),
         anexo.girarMotorEsquerda(130, 700)
     )
 
@@ -60,7 +59,8 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects
 
     await multitask(
         anexo.girarMotorDireita(-1500,800),
-        chassi.virar(-18, Speed.SLOW)
+        chassi.virar(-18, Speed.SLOW),
+        race=True
     )
     await chassi.virar(10, Speed.VERY_FAST),
 

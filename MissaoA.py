@@ -34,13 +34,15 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub):
     await chassi.virar(-57, Speed.VERY_FAST)
     await chassi.seguirReto(-350, Speed.VERY_FAST)  # Da ré para empurrar as pedras
     
-    await chassi.seguirReto(250,Speed.VERY_FAST)
-    await chassi.virar(-44, Speed.VERY_FAST) #virar e ajeitar
-    await chassi.seguirReto(650, Speed.VERY_FAST)
+    await chassi.seguirReto(300,Speed.VERY_FAST)
+    await chassi.virar(-49, Speed.VERY_FAST) #virar e ajeitar
+    await chassi.seguirReto(650, Speed.VERY_FAST) #voltar para a base
+    await chassi.virar(60,Speed.FAST)
+    await chassi.seguirReto(-200,Speed.FAST)
 
     
-    await chassi.virar(60, Speed.VERY_FAST) #virar e ajeitar
-    await chassi.seguirReto(-600, Speed.VERY_FAST)
+    #await chassi.virar(60, Speed.VERY_FAST) #virar e ajeitar
+   # await chassi.seguirReto(-600, Speed.VERY_FAST)
 
 
 

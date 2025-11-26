@@ -19,7 +19,7 @@ import MissaoE
 
 hub = Hub()
 sound = SoundEffects(hub= hub.hub)
-sound.setVolume(30)
+sound.setVolume(100)    # Define o volume do som
 chassi = Chassi(hub= hub)
 anexo = Anexo(hub= hub)
 
@@ -67,6 +67,7 @@ while True:
         sound.iniciarMissao()
 
         run_task(MissaoE.run(chassi= chassi, anexo= anexo, hub= hub, soundEffects=sound))
+
         chassi.stop()
         sound.finalizarMissao()
 

@@ -61,5 +61,18 @@ class SoundEffects:
         """
         await self.hub.speaker.beep(frequency= frequencia, duration= duracao)
 
+    async def musicaFinal(self):
+        melodias = [
+                "C4/4", "E4/4", "G4/4", "C5/4",   # subida alegre
+            "R/4", "C5/8", "B4/8", "A4/4",    # descida rápida com pausa
+            "F4/4", "A4/4", "F4/4", "C4/4",   # balanço divertido
+            "R/4", "D4/8", "F4/8", "G4/4",    # pulinho musical
+            "E4/2", "C4/2" 
+        ]
+
+        await self.hub.speaker.play_notes(melodias, tempo=100)
+
+
+
     def setVolume(self, volume):
         self.hub.speaker.volume(volume)
