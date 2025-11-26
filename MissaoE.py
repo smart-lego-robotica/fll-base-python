@@ -47,14 +47,17 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects
     # Chega na base
     chassi.stop()
 
-    
-    await soundEffects.beep(frequencia=600, duracao=2000)
-    await soundEffects.beep(frequencia=400, duracao=1000)
+    await multitask(
+        soundEffects.beep(frequencia=600, duracao=3000),
+        chassi.piscarTemporizador(3000)
 
+    )
+    
 
     await multitask(
         missao(),
-        soundEffects.musicaFinal()
+        soundEffects.musicaFinal(),
+        chassi.loopLuzes(6000)
 
     )
 

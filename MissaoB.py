@@ -15,65 +15,62 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects
 
     await chassi.seguirReto(240, Speed.VERY_FAST) 
     await chassi.virar(45, Speed.VERY_FAST) #ficar na direção para a missão
-    await chassi.seguirReto(260, Speed.VERY_FAST)
+    await chassi.seguirReto(240, Speed.VERY_FAST)
     await anexo.girarMotorEsquerda(500,-700) #fazer missão balança
 
     await soundEffects.beep()
-    await chassi.virar(10, Speed.VERY_FAST)
+    await chassi.virar(8, Speed.VERY_FAST)
     await multitask(
         chassi.seguirReto(-200, Speed.DEFAULT),
-        anexo.girarMotorEsquerda(210, 100)
+        anexo.girarMotorEsquerda(200, 100)
     )
-    await chassi.seguirReto(50, Speed.FAST)
-
     await multitask(
-
-        chassi.seguirReto(-500, Speed.FAST),
-        anexo.girarMotorEsquerda(130, 700)
+        chassi.seguirReto(130, Speed.FAST),
+        anexo.girarMotorEsquerda(265, 700)
     )
-
+    await chassi.virar(-40, Speed.VERY_FAST)
+    await chassi.seguirReto(-450, Speed.FAST),
+        
+   
 
     await soundEffects.beep()
 
     chassi.stop()
 
     await multitask(
-        anexo.girarMotorEsquerda(250, 700),
-        soundEffects.beep(frequencia=700, duracao=2000)
+        soundEffects.beep(frequencia=700, duracao=2000),
+        chassi.piscarTemporizador(2000)
     )
 
 
 
     # Chega na base
-    # await wait(3000)
     await soundEffects.beep(frequencia=400, duracao=1000)
 
-    # await wait(200)
 
-
-    await chassi.seguirReto(860, Speed.FAST)
+    await chassi.seguirReto(845, Speed.FAST)
     await chassi.virar(-83)
-    await chassi.seguirReto(80, Speed.SLOW) # Aproxima da missão
+    await chassi.seguirReto(99, Speed.DEFAULT) # Aproxima da missão
 
     # Faz a missão de levantar girando a engrenagem
 
     await multitask(
-        anexo.girarMotorDireita(-1500,800),
+        anexo.girarMotorDireita(-1250,800),
         chassi.virar(-18, Speed.SLOW),
         race=True
     )
-    await chassi.virar(10, Speed.VERY_FAST),
+    await chassi.virar(12, Speed.VERY_FAST),
 
 
     # await chassi.seguirReto(-90, Speed.FAST)
     # await chassi.virar(18,Speed.FAST)         
 
-    await chassi.seguirReto(-310, Speed.FAST)
+    await chassi.seguirReto(-320, Speed.FAST)
     await wait(500)
     await chassi.seguirReto(100, Speed.VERY_FAST)    # Coleta o negocio de ré
 
 
-    await chassi.virar(90, Speed.VERY_FAST)
+    await chassi.virar(85, Speed.VERY_FAST)
 
 
     await chassi.curva(1800, -30, Speed.VERY_FAST)

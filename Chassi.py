@@ -52,6 +52,8 @@ class Constants:
     WHEEL_DIAMETER = 62
     AXLE_TRACK = 80
 
+    PORT_ULTRASSONIC = Port.D
+
 
 class Chassi:
     """
@@ -91,6 +93,8 @@ class Chassi:
         # (38, 20)
         self.driveBase.heading_control.target_tolerances(speed=8, position=4)
         self.driveBase.use_gyro(use_gyro=True)
+
+        self.ultrassonico = UltrasonicSensor(port=Constants.PORT_ULTRASSONIC)
 
     def setSpeed(self, velocidade):
         """
@@ -168,3 +172,62 @@ class Chassi:
         """
 
         self.driveBase.stop()
+
+    """
+    Pisca as luzes do sensor ultrassonico
+
+    Args:
+        duracao (int): duração em milisegundos.
+
+    Example:
+        await chassi.piscarLuz(duracao= 1000)
+    """
+    async def piscarTemporizador(self, duracao=2000):
+        tempo = StopWatch()
+        while tempo.time() < duracao:
+            # Calcula quanto tempo falta
+            restante = duracao - tempo.time()
+
+            # Define o intervalo de piscada proporcional ao tempo restante
+            # Quanto menor o tempo restante, menor o intervalo (mais rápido pisca)
+            intervalo = max(50, int(restante / 20))  
+            # aqui o mínimo é 50ms para não ficar rápido demais
+
+            # Liga a luz
+            await self.ultrassonico.lights.on(100)
+            await wait(intervalo)
+
+            # Desliga a luz
+            await self.ultrassonico.lights.off()
+            await wait(intervalo)
+
+    def piscarQuantidade(self, quantidade=3):
+        for i in range(3):
+            self.ultrassonico.lights.on(100)
+            wait(20)
+
+            self.ultrassonico.lights.off()
+            wait(20)
+
+    async def loopLuzes(self, duracao=4000):
+        tempo = StopWatch()
+        indice = 0  # começa no LED 0
+        
+        while tempo.time() < duracao:
+            restante = duracao - tempo.time()
+
+            # Cria uma tupla com todos apagados
+            leds = [0, 0, 0, 0]
+
+            # Acende apenas o LED atual
+            leds[indice] = 100
+            await self.ultrassonico.lights.on(tuple(leds))
+
+            await wait(20)
+
+            # Apaga todos
+            await self.ultrassonico.lights.off()
+            await wait(20)
+
+            # Avança para o próximo LED (0→1→2→3→0…)
+            indice = (indice + 1) % 4

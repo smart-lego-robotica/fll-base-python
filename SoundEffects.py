@@ -63,14 +63,18 @@ class SoundEffects:
 
     async def musicaFinal(self):
         melodias = [
-                "C4/4", "E4/4", "G4/4", "C5/4",   # subida alegre
-            "R/4", "C5/8", "B4/8", "A4/4",    # descida rápida com pausa
-            "F4/4", "A4/4", "F4/4", "C4/4",   # balanço divertido
-            "R/4", "D4/8", "F4/8", "G4/4",    # pulinho musical
-            "E4/2", "C4/2" 
+    "E5/8", "E5/8", "R/8", "E5/8",    # E E pausa E
+    "R/8", "C5/8", "E5/8", "R/8",     # pausa C E pausa
+    "G5/4", "R/4",                    # G longo + pausa
+    "G4/8", "R/4", "C5/8", "R/8",     # G baixo, pausa, C, pausa
+    "G4/8", "R/8", "E4/8", "R/8",     # G, pausa, E, pausa
+    "A4/8", "R/8", "B4/8", "R/8",     # A, pausa, B, pausa
+    "Bb4/8", "A4/8", "R/8",           # Bb, A, pausa
+    "G4/8", "E5/8", "G5/8", "A5/8",   # subida divertida
+    "R/4", "F5/8", "G5/8", "R/4"      # final da frase
         ]
 
-        await self.hub.speaker.play_notes(melodias, tempo=100)
+        await self.hub.speaker.play_notes(melodias, tempo=140)
 
 
 

@@ -81,9 +81,16 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects
     )
     chassi.stop()
     await soundEffects.beep(frequencia=200, duracao=100)
-    await soundEffects.beep(frequencia=700, duracao=3000)
-    await soundEffects.beep(frequencia=400, duracao=3000)
-    await soundEffects.beep(frequencia=200, duracao=2000)
+
+
+    await multitask(
+        chassi.piscarTemporizador(4000),
+        soundEffects.beep(frequencia=700, duracao=4000)
+
+    )
+    
+    await soundEffects.beep(frequencia=200, duracao=100)
+
 
     # Realiza as entregas dos elementos
 
@@ -94,7 +101,7 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects
         anexo.girarMotorDireita(graus=350, velocidade=600)
 
     )
-    await anexo.girarMotorDireita(200,350)
+    await anexo.girarMotorDireita(-200,350)
     await chassi.seguirReto(150, Speed.SLOW)
     await chassi.seguirReto(-500, Speed.VERY_FAST)
 
