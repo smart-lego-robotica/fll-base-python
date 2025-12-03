@@ -57,7 +57,7 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects
     await multitask(
         missao(),
         soundEffects.musicaFinal(),
-        chassi.loopLuzes(6000)
+        chassi.piscarTemporizador(6000)
 
     )
 

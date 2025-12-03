@@ -49,24 +49,25 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub):
         # )
     """
     
-    await chassi.seguirReto(distancia=719.00, velocidade=Speed.VERY_FAST)
-    await chassi.seguirReto(distancia=-134.00, velocidade=Speed.VERY_FAST)
-    await chassi.seguirReto(distancia=180.00, velocidade=Speed.VERY_FAST)
+    await chassi.seguirReto(distancia=720.00, velocidade=Speed.VERY_FAST)
+    await chassi.seguirReto(distancia=-164.00, velocidade=Speed.VERY_FAST)
+    await chassi.seguirReto(distancia=210.00, velocidade=Speed.VERY_FAST)
     await chassi.seguirReto(distancia=-60.00, velocidade=Speed.VERY_FAST)
-
-    # await anexo.girarMotorEsquerda(graus=100, velocidade=600)
+    await chassi.virar(-10, Speed.VERY_FAST)
+    await chassi.seguirReto(distancia=50, velocidade=Speed.VERY_FAST)
+    await chassi.seguirReto(-30,Speed.VERY_FAST)
     await anexo.girarMotorEsquerda(graus=280, velocidade=200)
     await anexo.girarMotorEsquerda(graus=180, velocidade=-700)
 
 
 
-    await chassi.virar(1, Speed.DEFAULT)
+    await chassi.virar(10, Speed.DEFAULT)
 
     await chassi.seguirReto(distancia=75, velocidade=Speed.DEFAULT)
 
     await multitask (
         anexo.girarMotorEsquerda(graus=160, velocidade=-500),
-        chassi.seguirReto(distancia=120, velocidade=Speed.DEFAULT)
+        chassi.seguirReto(distancia=100, velocidade=Speed.DEFAULT)
 
     )
 
@@ -89,7 +90,7 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub):
     
     await multitask (
           chassi.seguirReto(distancia=-80.00, velocidade=Speed.VERY_FAST),
-          anexo.girarMotorEsquerda(graus=-100,velocidade=600),
+          anexo.girarMotorEsquerda(graus=-70,velocidade=600),
           chassi.seguirReto(distancia=-700.00, velocidade=Speed.VERY_FAST)
     )
 

@@ -20,7 +20,7 @@ class Speed:
         FAST (list[int]): Movimento rápido.
     """
 
-    SLOW = [100, 200, 50, 100]
+    SLOW = [100, 200, 100, 100]
     DEFAULT = [400, 400, 500, 800]
     FAST = [1000, 800, 1200, 800]
 
@@ -209,7 +209,7 @@ class Chassi:
             self.ultrassonico.lights.off()
             wait(20)
 
-    async def loopLuzes(self, duracao=4000):
+    def loopLuzes(self, duracao=4000):
         tempo = StopWatch()
         indice = 0  # começa no LED 0
         
@@ -221,13 +221,13 @@ class Chassi:
 
             # Acende apenas o LED atual
             leds[indice] = 100
-            await self.ultrassonico.lights.on(tuple(leds))
+            self.ultrassonico.lights.on(tuple(leds))
 
-            await wait(20)
+            wait(20)
 
             # Apaga todos
-            await self.ultrassonico.lights.off()
-            await wait(20)
+            self.ultrassonico.lights.off()
+            wait(20)
 
             # Avança para o próximo LED (0→1→2→3→0…)
             indice = (indice + 1) % 4

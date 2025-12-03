@@ -25,10 +25,10 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects
         anexo.girarMotorEsquerda(200, 100)
     )
     await multitask(
-        chassi.seguirReto(130, Speed.FAST),
+        chassi.seguirReto(150, Speed.FAST),
         anexo.girarMotorEsquerda(265, 700)
     )
-    await chassi.virar(-40, Speed.VERY_FAST)
+    await chassi.virar(-50, Speed.VERY_FAST)
     await chassi.seguirReto(-450, Speed.FAST),
         
    
@@ -48,14 +48,14 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects
     await soundEffects.beep(frequencia=400, duracao=1000)
 
 
-    await chassi.seguirReto(845, Speed.FAST)
+    await chassi.seguirReto(850, Speed.FAST)
     await chassi.virar(-83)
-    await chassi.seguirReto(99, Speed.DEFAULT) # Aproxima da missão
+    await chassi.seguirReto(120, Speed.DEFAULT) # Aproxima da missão
 
     # Faz a missão de levantar girando a engrenagem
 
     await multitask(
-        anexo.girarMotorDireita(-1250,800),
+        anexo.girarMotorDireita(-1150,800),
         chassi.virar(-18, Speed.SLOW),
         race=True
     )
@@ -65,8 +65,7 @@ async def run(chassi: Chassi, anexo: Anexo, hub: Hub, soundEffects: SoundEffects
     # await chassi.seguirReto(-90, Speed.FAST)
     # await chassi.virar(18,Speed.FAST)         
 
-    await chassi.seguirReto(-320, Speed.FAST)
-    await wait(500)
+    await chassi.seguirReto(-330, Speed.FAST)
     await chassi.seguirReto(100, Speed.VERY_FAST)    # Coleta o negocio de ré
 
 

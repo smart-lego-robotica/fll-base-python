@@ -26,7 +26,7 @@ anexo = Anexo(hub= hub)
 sound.ligarRobo()
 # chassi.piscarQuantidade()
 
-chassi.loopLuzes()
+chassi.loopLuzes(duracao=600)
 
 
 missionSelected = hub_menu("A", "B", "C", "D", "E")
